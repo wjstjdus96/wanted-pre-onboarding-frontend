@@ -5,20 +5,13 @@ import styled from "styled-components";
 import { requestSignUp } from "../apis/auth";
 import { useNavigate } from "react-router-dom";
 import { RES_MESSAGE, SIGN_UP } from "../apis/const";
+import { checkEmail, checkPassword } from "../utils/checkValid";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 300px;
 `;
-
-const checkEmail = (email) => {
-  return email.includes("@");
-};
-
-const checkPassword = (password) => {
-  return password.length >= 8;
-};
 
 function SignUp() {
   const navigate = useNavigate();
@@ -48,7 +41,7 @@ function SignUp() {
 
   return (
     <div>
-      <h2>회원가입</h2>
+      <h2>{SIGN_UP}</h2>
       <form onSubmit={onSubmitHandler}>
         <Wrapper>
           <Input
@@ -68,7 +61,7 @@ function SignUp() {
             onChange={passwordChangeHandler}
           />
           <Button
-            text="회원가입"
+            text={SIGN_UP}
             testId="signup-button"
             disabled={isEmailValid && isPasswordValid ? false : true}
           />
