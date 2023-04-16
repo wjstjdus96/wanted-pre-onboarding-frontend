@@ -6,10 +6,18 @@ const Wrapper = styled.button`
   border: none;
   padding: 12px;
   border-radius: 10px;
+  cursor: pointer;
+  &:disabled {
+    background-color: rgb(1, 113, 227, 0.5);
+  }
 `;
 
-function Button({ text, testId }) {
-  return <Wrapper data-testid={testId}>{text}</Wrapper>;
+function Button({ text, testId, disabled }) {
+  return (
+    <Wrapper data-testid={testId} disabled={disabled}>
+      {text}
+    </Wrapper>
+  );
 }
 
 export default Button;
