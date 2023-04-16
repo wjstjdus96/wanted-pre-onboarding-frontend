@@ -4,6 +4,7 @@ import Input from "../components/Input";
 import styled from "styled-components";
 import { requestSignUp } from "../apis/auth";
 import { useNavigate } from "react-router-dom";
+import { RES_MESSAGE, SING_UP } from "../apis/const";
 
 const Wrapper = styled.div`
   display: flex;
@@ -38,8 +39,7 @@ function SignUp() {
     e.preventDefault();
     const info = { email: enteredEmail, password: enteredPassword };
     requestSignUp(info).then((res) => {
-      console.log(res);
-      alert("회원가입에 성공하였습니다");
+      alert(RES_MESSAGE.SUCCESS(SING_UP));
       if (res.status == 201) {
         return navigate("/signin", { replace: true });
       }
