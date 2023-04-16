@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Button from "../components/Button";
+import { SIGN_IN, SIGN_UP } from "../apis/const";
 
 const Buttons = styled.div`
   display: flex;
-  gap: 30px;
+  flex-direction: column;
+  width: 300px;
   button {
-    padding: 3px;
-    text-decoration: none;
+    width: 100%;
+    margin-bottom: 30px;
   }
 `;
 
@@ -16,10 +19,10 @@ function Home() {
       <h2>Home</h2>
       <Buttons>
         <Link to="/signin">
-          <button>로그인</button>
+          <Button text={SIGN_IN} disabled={false} />
         </Link>
         <Link to="/signup">
-          <button>회원가입</button>
+          <Button text={SIGN_UP} disabled={false} />
         </Link>
       </Buttons>
     </div>

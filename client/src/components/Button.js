@@ -14,7 +14,7 @@ const Wrapper = styled.button`
 
 function Button({ text, testId, disabled }) {
   return (
-    <Wrapper data-testid={testId} disabled={disabled}>
+    <Wrapper data-testid={testId ? testId : null} disabled={disabled}>
       {text}
     </Wrapper>
   );

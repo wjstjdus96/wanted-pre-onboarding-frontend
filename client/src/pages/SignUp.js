@@ -4,7 +4,7 @@ import Input from "../components/Input";
 import styled from "styled-components";
 import { requestSignUp } from "../apis/auth";
 import { useNavigate } from "react-router-dom";
-import { RES_MESSAGE, SING_UP } from "../apis/const";
+import { RES_MESSAGE, SIGN_UP } from "../apis/const";
 
 const Wrapper = styled.div`
   display: flex;
@@ -39,7 +39,7 @@ function SignUp() {
     e.preventDefault();
     const info = { email: enteredEmail, password: enteredPassword };
     requestSignUp(info).then((res) => {
-      alert(RES_MESSAGE.SUCCESS(SING_UP));
+      alert(RES_MESSAGE.SUCCESS(SIGN_UP));
       if (res.status == 201) {
         return navigate("/signin", { replace: true });
       }

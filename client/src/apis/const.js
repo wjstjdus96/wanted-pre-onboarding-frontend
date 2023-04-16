@@ -9,5 +9,5 @@ export const RES_MESSAGE = {
   },
 };
 
-export const SING_UP = "회원가입";
+export const SIGN_UP = "회원가입";
 export const SIGN_IN = "로그인";
