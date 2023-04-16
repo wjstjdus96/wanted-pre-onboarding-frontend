@@ -2,6 +2,8 @@ import { useState } from "react";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import styled from "styled-components";
+import { requestSignUp } from "../apis/auth";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,6 +20,7 @@ const checkPassword = (password) => {
 };
 
 function SignUp() {
+  const navigate = useNavigate();
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(false);
@@ -31,7 +34,17 @@ function SignUp() {
     setEnteredPassword(e.target.value);
     setIsPasswordValid(checkPassword(e.target.value));
   };
-  const onSubmitHandler = (e) => {};
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    const info = { email: enteredEmail, password: enteredPassword };
+    requestSignUp(info).then((res) => {
+      console.log(res);
+      alert("회원가입에 성공하였습니다");
+      if (res.status == 201) {
+        return navigate("/signin", { replace: true });
+      }
+    });
+  };
 
   return (
     <div>
