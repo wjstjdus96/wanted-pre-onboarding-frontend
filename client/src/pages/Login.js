@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import styled from "styled-components";
-import { requestSignUp } from "../apis/auth";
+import { requestSignIn, requestSignUp } from "../apis/auth";
 import { useNavigate } from "react-router-dom";
 import { RES_MESSAGE, SIGN_IN, SIGN_UP } from "../apis/const";
 import { checkEmail, checkPassword } from "../utils/checkValid";
@@ -30,6 +30,18 @@ function Login() {
   };
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    const info = { email: enteredEmail, password: enteredPassword };
+    requestSignIn(info)
+      .then((res) => {
+        console.log(res);
+        if (res.status == 200) {
+          localStorage.setItem("user", res.data.access_token);
+          navigate("/todo", { replace: true });
+        }
+      })
+      .catch((err) => {
+        alert(RES_MESSAGE.FAIL(SIGN_IN));
+      });
   };
 
   return (
