@@ -32,6 +32,8 @@ export const requestGetTodos = async (setHandler) => {
     .then((res) => {
       if (res.status == 200) {
         setHandler(res.data);
+        console.log("데이터 가져오기 완료");
+        console.log(res.data);
       }
     })
     .catch((err) => {});
@@ -49,7 +51,8 @@ export const requestUpdateTodo = async (id, data) => {
     .put(`${API_URL}todos/${id}`, data, config)
     .then((res) => {
       if (res.status == 200) {
-        console.log("업데이트 완료");
+        console.log(`${id}업데이트 완료`);
+        console.log(res.data);
       }
     })
     .catch((err) => {});

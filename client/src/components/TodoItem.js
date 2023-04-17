@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { requestUpdateTodo } from "../apis/todo";
+import useDidMountEffect from "../hooks/useDidMountEffect";
 
 const ItemWrapper = styled.div`
   padding: 10px 0px;
@@ -24,9 +25,17 @@ const ItemWrapper = styled.div`
 function TodoItem({ item }) {
   const [isChecked, setIsChecked] = useState(item.isCompleted);
   const [text, setText] = useState(item.todo);
+
+  //   useEffect(() => {
+  //     updateTodo();
+  //   }, [isChecked, text]);
+
+  useDidMountEffect(() => {
+    updateTodo();
+  }, [isChecked, text]);
+
   const checkedHandler = () => {
     setIsChecked((prev) => !prev);
-    updateTodo();
   };
   const updateTodo = () => {
     const newData = {

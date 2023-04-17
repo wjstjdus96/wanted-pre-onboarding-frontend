@@ -3,6 +3,7 @@ import { checkToken } from "../utils/checkToken";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import TodoList from "../components/TodoList";
+import AddTodo from "../components/AddTodo";
 
 const Wrapper = styled.div`
   /* display: flex;
@@ -23,6 +24,7 @@ function Todo() {
     <div>
       <h2>나의 투두</h2>
       <Wrapper>
+        <AddTodo />
         <TodoList />
       </Wrapper>
     </div>
