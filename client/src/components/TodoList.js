@@ -16,7 +16,6 @@ function TodoList() {
           <span>할 일을 추가하십시오</span>
         ) : (
           <div>
-            {/* <TodoItem todo={todos} /> */}
             {todos.map((item) => (
               <TodoItem item={item} />
             ))}
