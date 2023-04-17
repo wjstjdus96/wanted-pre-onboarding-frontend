@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import styled from "styled-components";
@@ -6,6 +6,7 @@ import { requestSignUp } from "../apis/auth";
 import { useNavigate } from "react-router-dom";
 import { RES_MESSAGE, SIGN_UP } from "../constants/const";
 import { checkEmail, checkPassword } from "../utils/checkValid";
+import { checkToken } from "../utils/checkToken";
 
 const Wrapper = styled.div`
   display: flex;
@@ -38,6 +39,12 @@ function SignUp() {
       }
     });
   };
+
+  useEffect(() => {
+    if (checkToken()) {
+      navigate("/todo");
+    }
+  }, []);
 
   return (
     <div>

@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import styled from "styled-components";
 import { requestSignIn, requestSignUp } from "../apis/auth";
 import { useNavigate } from "react-router-dom";
-import { RES_MESSAGE, SIGN_IN, SIGN_UP } from "../constants/const";
+import { RES_MESSAGE, SIGN_IN, SIGN_UP, TOKEN_KEY } from "../constants/const";
 import { checkEmail, checkPassword } from "../utils/checkValid";
+import { checkToken } from "../utils/checkToken";
 
 const Wrapper = styled.div`
   display: flex;
@@ -35,7 +36,7 @@ function Login() {
       .then((res) => {
         console.log(res);
         if (res.status == 200) {
-          localStorage.setItem("user", res.data.access_token);
+          localStorage.setItem(TOKEN_KEY, res.data.access_token);
           navigate("/todo", { replace: true });
         }
       })
@@ -43,6 +44,12 @@ function Login() {
         alert(RES_MESSAGE.FAIL(SIGN_IN));
       });
   };
+
+  useEffect(() => {
+    if (checkToken()) {
+      navigate("/todo");
+    }
+  }, []);
 
   return (
     <div>
