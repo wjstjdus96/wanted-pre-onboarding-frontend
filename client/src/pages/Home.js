@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
-import { SIGN_IN, SIGN_UP } from "../apis/const";
+import { SIGN_IN, SIGN_UP } from "../constants/const";
 
 const Buttons = styled.div`
   display: flex;

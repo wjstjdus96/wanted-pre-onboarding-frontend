@@ -9,6 +9,7 @@ const Wrapper = styled.button`
   cursor: pointer;
   &:disabled {
     background-color: rgb(1, 113, 227, 0.5);
+    cursor: default;
   }
 `;
 

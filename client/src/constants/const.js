@@ -1,4 +1,5 @@
 export const API_URL = "https://www.pre-onboarding-selection-task.shop/";
+export const TOKEN_KEY = "user";
 
 export const RES_MESSAGE = {
   SUCCESS(state) {
