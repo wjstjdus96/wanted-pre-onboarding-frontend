@@ -26,10 +26,6 @@ function TodoItem({ item }) {
   const [isChecked, setIsChecked] = useState(item.isCompleted);
   const [text, setText] = useState(item.todo);
 
-  //   useEffect(() => {
-  //     updateTodo();
-  //   }, [isChecked, text]);
-
   useDidMountEffect(() => {
     updateTodo();
   }, [isChecked, text]);

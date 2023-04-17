@@ -52,7 +52,6 @@ export const requestUpdateTodo = async (id, data) => {
     .then((res) => {
       if (res.status == 200) {
         console.log(`${id}업데이트 완료`);
-        console.log(res.data);
       }
     })
     .catch((err) => {});
