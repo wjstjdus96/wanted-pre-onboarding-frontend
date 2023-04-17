@@ -1,6 +1,14 @@
 import { useEffect } from "react";
 import { checkToken } from "../utils/checkToken";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import TodoList from "../components/TodoList";
+
+const Wrapper = styled.div`
+  /* display: flex;
+  flex-direction: column; */
+  width: 300px;
+`;
 
 function Todo() {
   const navigate = useNavigate();
@@ -11,7 +19,14 @@ function Todo() {
     }
   }, []);
 
-  return <div>투두</div>;
+  return (
+    <div>
+      <h2>나의 투두</h2>
+      <Wrapper>
+        <TodoList />
+      </Wrapper>
+    </div>
+  );
 }
 
 export default Todo;
