@@ -4,7 +4,7 @@ import Input from "../components/Input";
 import styled from "styled-components";
 import { requestSignUp } from "../apis/auth";
 import { useNavigate } from "react-router-dom";
-import { RES_MESSAGE, SIGN_UP } from "../apis/const";
+import { RES_MESSAGE, SIGN_UP } from "../constants/const";
 import { checkEmail, checkPassword } from "../utils/checkValid";
 
 const Wrapper = styled.div`
