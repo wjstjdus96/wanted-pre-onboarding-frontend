@@ -2,11 +2,8 @@ import axios from "axios";
 import { API_URL } from "../constants/const";
 import { getToken } from "../utils/checkToken";
 
-export const requestCreateTodo = async (newTodo) => {
+export const requestCreateTodo = async (data) => {
   const access_token = getToken();
-  const data = {
-    todo: newTodo,
-  };
   const config = {
     headers: {
       Authorization: `Bearer ${access_token}`,
@@ -40,6 +37,37 @@ export const requestGetTodos = async (setHandler) => {
     .catch((err) => {});
 };
 
-// 투두 업데이트
+export const requestUpdateTodo = async (id, data) => {
+  const access_token = getToken();
+  const config = {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+      "Content-Type": "application/json",
+    },
+  };
+  await axios
+    .put(`${API_URL}todos/${id}`, data, config)
+    .then((res) => {
+      if (res.status == 200) {
+        console.log("업데이트 완료");
+      }
+    })
+    .catch((err) => {});
+};
 
-// 투두 삭제
+export const requestDeleteTodo = async (id) => {
+  const access_token = getToken();
+  const config = {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  };
+  await axios
+    .delete(`${API_URL}todos/${id}`, config)
+    .then((res) => {
+      if (res.status == 204) {
+        console.log("삭제 완료");
+      }
+    })
+    .catch((err) => {});
+};
