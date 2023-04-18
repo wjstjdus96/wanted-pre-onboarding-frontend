@@ -12,6 +12,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 300px;
+  input {
+    margin-bottom: 23px;
+  }
 `;
 
 function Login() {

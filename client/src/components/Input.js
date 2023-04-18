@@ -3,7 +3,6 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 23px;
   label {
     margin-bottom: 5px;
   }
@@ -17,7 +16,7 @@ const Wrapper = styled.div`
 function Input({ label, testId, ...inputProps }) {
   return (
     <Wrapper>
-      <label>{label}</label>
+      {label && <label>{label}</label>}
       <input data-testid={testId} {...inputProps} />
     </Wrapper>
   );
