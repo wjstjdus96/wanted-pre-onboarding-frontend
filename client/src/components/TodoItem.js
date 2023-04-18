@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { requestUpdateTodo } from "../apis/todo";
+import {
+  requestDeleteTodo,
+  requestGetTodos,
+  requestUpdateTodo,
+} from "../apis/todo";
 import useDidMountEffect from "../hooks/useDidMountEffect";
 
 const ItemWrapper = styled.div`
@@ -18,11 +22,15 @@ const ItemWrapper = styled.div`
     margin-right: 6px;
   }
   button {
-    margin-right: 3px;
+    margin-left: 6px;
+    background-color: white;
+    border: 1.5px solid #0171e3;
+    border-radius: 10px;
+    cursor: pointer;
   }
 `;
 
-function TodoItem({ item }) {
+function TodoItem({ item, setTodoHandler }) {
   const [isChecked, setIsChecked] = useState(item.isCompleted);
   const [text, setText] = useState(item.todo);
 
@@ -32,6 +40,10 @@ function TodoItem({ item }) {
 
   const checkedHandler = () => {
     setIsChecked((prev) => !prev);
+  };
+  const deleteHandler = async () => {
+    await requestDeleteTodo(item.id);
+    await requestGetTodos(setTodoHandler);
   };
   const updateTodo = () => {
     const newData = {
@@ -52,8 +64,10 @@ function TodoItem({ item }) {
           />
           <span>{text}</span>
         </label>
-        <button>수정</button>
-        <button>삭제</button>
+        <button data-testid="modify-button">수정</button>
+        <button onClick={deleteHandler} data-testid="delete-button">
+          삭제
+        </button>
       </li>
     </ItemWrapper>
   );

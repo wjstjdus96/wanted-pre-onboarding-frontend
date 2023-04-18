@@ -18,7 +18,8 @@ function AddTodo() {
   const todoChangeHandler = (e) => {
     setEnteredTodo(e.target.value);
   };
-  const submitTodoHandler = () => {
+  const submitTodoHandler = (e) => {
+    e.preventDefault();
     const data = { todo: enteredTodo };
     requestCreateTodo(data);
   };

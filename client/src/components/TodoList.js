@@ -17,7 +17,7 @@ function TodoList() {
         ) : (
           <div>
             {todos.map((item) => (
-              <TodoItem item={item} key={item.id} />
+              <TodoItem item={item} key={item.id} setTodoHandler={setTodos} />
             ))}
           </div>
         )
