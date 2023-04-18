@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import styled from "styled-components";
-import { requestSignIn, requestSignUp } from "../apis/auth";
+import { requestSignIn } from "../apis/auth";
 import { useNavigate } from "react-router-dom";
 import {
   EMAIL_MES,
@@ -44,7 +44,6 @@ function Login() {
     const info = { email: enteredEmail, password: enteredPassword };
     requestSignIn(info)
       .then((res) => {
-        console.log(res);
         if (res.status == 200) {
           localStorage.setItem(TOKEN_KEY, res.data.access_token);
           navigate("/todo", { replace: true });
