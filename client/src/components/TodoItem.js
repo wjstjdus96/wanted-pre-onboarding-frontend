@@ -17,9 +17,19 @@ const ItemWrapper = styled.div`
   }
   label {
     flex-grow: 6;
+    display: flex;
+    align-items: center;
   }
-  input {
+  span {
+    font-size: 15px;
+  }
+  input[type="checkbox"] {
     margin-right: 6px;
+  }
+  input[type="text"] {
+    padding-bottom: 5px;
+    border: none;
+    border-bottom: 1px solid black;
   }
   button {
     margin-left: 6px;
@@ -33,6 +43,8 @@ const ItemWrapper = styled.div`
 function TodoItem({ item, setTodoHandler }) {
   const [isChecked, setIsChecked] = useState(item.isCompleted);
   const [text, setText] = useState(item.todo);
+  const [newText, setNewText] = useState(text);
+  const [isRevise, setIsRevise] = useState(false);
 
   useDidMountEffect(() => {
     updateTodo();
@@ -52,22 +64,65 @@ function TodoItem({ item, setTodoHandler }) {
     };
     requestUpdateTodo(item.id, newData);
   };
+  const reviseHandler = () => {
+    setIsRevise(true);
+    // document.getElementById("modify-input").focus();
+  };
+  const cancelHandler = () => {
+    setIsRevise(false);
+  };
+  const submitHandler = (e) => {
+    setText(newText);
+    setIsRevise(false);
+  };
+  const modifyTextHandler = (e) => {
+    setNewText(e.target.value);
+  };
 
   return (
     <ItemWrapper>
       <li>
-        <label>
-          <input
-            type="checkbox"
-            checked={isChecked}
-            onChange={checkedHandler}
-          />
-          <span>{text}</span>
-        </label>
-        <button data-testid="modify-button">수정</button>
-        <button onClick={deleteHandler} data-testid="delete-button">
-          삭제
-        </button>
+        {isRevise ? (
+          <>
+            <label>
+              <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={checkedHandler}
+              />
+              <input
+                data-testid="modify-input"
+                id="modify-input"
+                type="text"
+                value={newText}
+                onChange={modifyTextHandler}
+              />
+            </label>
+            <button data-testid="submit-button" onClick={submitHandler}>
+              제출
+            </button>
+            <button data-testid="cancel-button" onClick={cancelHandler}>
+              취소
+            </button>
+          </>
+        ) : (
+          <>
+            <label>
+              <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={checkedHandler}
+              />
+              <span>{text}</span>
+            </label>
+            <button data-testid="modify-button" onClick={reviseHandler}>
+              수정
+            </button>
+            <button data-testid="delete-button" onClick={deleteHandler}>
+              삭제
+            </button>
+          </>
+        )}
       </li>
     </ItemWrapper>
   );

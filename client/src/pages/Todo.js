@@ -4,11 +4,17 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import TodoList from "../components/TodoList";
 import AddTodo from "../components/AddTodo";
+import { BiLogOut } from "react-icons/bi";
+import { TOKEN_KEY } from "../constants/const";
 
 const Wrapper = styled.div`
-  /* display: flex;
-  flex-direction: column; */
   width: 300px;
+`;
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 function Todo() {
@@ -20,11 +26,19 @@ function Todo() {
     }
   }, []);
 
+  const logOutHandler = () => {
+    localStorage.removeItem(TOKEN_KEY);
+    alert("로그아웃 되었습니다.");
+    navigate("/");
+  };
+
   return (
     <div>
-      <h2>나의 투두</h2>
       <Wrapper>
-        {/* <AddTodo /> */}
+        <Header>
+          <h2>나의 투두</h2>
+          <BiLogOut onClick={logOutHandler} size="24" />
+        </Header>
         <TodoList />
       </Wrapper>
     </div>
