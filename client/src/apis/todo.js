@@ -33,7 +33,6 @@ export const requestGetTodos = async (setHandler) => {
       if (res.status == 200) {
         setHandler(res.data);
         console.log("데이터 가져오기 완료");
-        console.log(res.data);
       }
     })
     .catch((err) => {});

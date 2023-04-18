@@ -24,7 +24,7 @@ function Todo() {
     <div>
       <h2>나의 투두</h2>
       <Wrapper>
-        <AddTodo />
+        {/* <AddTodo /> */}
         <TodoList />
       </Wrapper>
     </div>

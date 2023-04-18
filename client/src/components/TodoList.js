@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { requestGetTodos } from "../apis/todo";
+import AddTodo from "./AddTodo";
 import TodoItem from "./TodoItem";
 
 function TodoList() {
@@ -11,6 +12,7 @@ function TodoList() {
 
   return (
     <div>
+      <AddTodo setTodoHandler={setTodos} />
       {todos ? (
         todos.length == 0 ? (
           <span>할 일을 추가하십시오</span>

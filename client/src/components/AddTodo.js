@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "./Button";
 import Input from "./Input";
 import styled from "styled-components";
-import { requestCreateTodo } from "../apis/todo";
+import { requestCreateTodo, requestGetTodos } from "../apis/todo";
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,15 +13,17 @@ const Wrapper = styled.div`
   }
 `;
 
-function AddTodo() {
+function AddTodo({ setTodoHandler }) {
   const [enteredTodo, setEnteredTodo] = useState("");
   const todoChangeHandler = (e) => {
     setEnteredTodo(e.target.value);
   };
-  const submitTodoHandler = (e) => {
+  const submitTodoHandler = async (e) => {
     e.preventDefault();
     const data = { todo: enteredTodo };
-    requestCreateTodo(data);
+    await requestCreateTodo(data);
+    await requestGetTodos(setTodoHandler);
+    setEnteredTodo("");
   };
 
   return (
@@ -33,6 +35,7 @@ function AddTodo() {
           type="text"
           value={enteredTodo}
           onChange={todoChangeHandler}
+          required
         />
         <Button testId="new-todo-add-button" text="추가" />
       </Wrapper>
