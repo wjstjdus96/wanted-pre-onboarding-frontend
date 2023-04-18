@@ -5,6 +5,7 @@ import {
   requestGetTodos,
   requestUpdateTodo,
 } from "../apis/todo";
+import { CANCEL, DELETE, REVISE, SUBMIT } from "../constants/const";
 import useDidMountEffect from "../hooks/useDidMountEffect";
 
 const ItemWrapper = styled.div`
@@ -66,7 +67,6 @@ function TodoItem({ item, setTodoHandler }) {
   };
   const reviseHandler = () => {
     setIsRevise(true);
-    // document.getElementById("modify-input").focus();
   };
   const cancelHandler = () => {
     setIsRevise(false);
@@ -99,10 +99,10 @@ function TodoItem({ item, setTodoHandler }) {
               />
             </label>
             <button data-testid="submit-button" onClick={submitHandler}>
-              제출
+              {SUBMIT}
             </button>
             <button data-testid="cancel-button" onClick={cancelHandler}>
-              취소
+              {CANCEL}
             </button>
           </>
         ) : (
@@ -116,10 +116,10 @@ function TodoItem({ item, setTodoHandler }) {
               <span>{text}</span>
             </label>
             <button data-testid="modify-button" onClick={reviseHandler}>
-              수정
+              {REVISE}
             </button>
             <button data-testid="delete-button" onClick={deleteHandler}>
-              삭제
+              {DELETE}
             </button>
           </>
         )}

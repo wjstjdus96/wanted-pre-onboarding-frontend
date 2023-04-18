@@ -14,7 +14,7 @@ export const requestCreateTodo = async (data) => {
     .post(`${API_URL}todos`, data, config)
     .then((res) => {
       if (res.status == 201) {
-        console.log("생성 완료");
+        // console.log("생성 완료");
       }
     })
     .catch((err) => {});
@@ -32,7 +32,7 @@ export const requestGetTodos = async (setHandler) => {
     .then((res) => {
       if (res.status == 200) {
         setHandler(res.data);
-        console.log("데이터 가져오기 완료");
+        // console.log("데이터 가져오기 완료");
       }
     })
     .catch((err) => {});
@@ -50,7 +50,7 @@ export const requestUpdateTodo = async (id, data) => {
     .put(`${API_URL}todos/${id}`, data, config)
     .then((res) => {
       if (res.status == 200) {
-        console.log(`${id}업데이트 완료`);
+        // console.log(`${id}업데이트 완료`);
       }
     })
     .catch((err) => {});
@@ -67,7 +67,7 @@ export const requestDeleteTodo = async (id) => {
     .delete(`${API_URL}todos/${id}`, config)
     .then((res) => {
       if (res.status == 204) {
-        console.log("삭제 완료");
+        // console.log("삭제 완료");
       }
     })
     .catch((err) => {});

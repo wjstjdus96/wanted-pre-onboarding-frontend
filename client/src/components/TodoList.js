@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { requestGetTodos } from "../apis/todo";
+import { TODO_EMPTY_MES, TODO_LOADING_MES } from "../constants/const";
 import AddTodo from "./AddTodo";
 import TodoItem from "./TodoItem";
 
@@ -15,7 +16,7 @@ function TodoList() {
       <AddTodo setTodoHandler={setTodos} />
       {todos ? (
         todos.length == 0 ? (
-          <span>할 일을 추가하십시오</span>
+          <span>{TODO_EMPTY_MES}</span>
         ) : (
           <div>
             {todos.map((item) => (
@@ -24,7 +25,7 @@ function TodoList() {
           </div>
         )
       ) : (
-        <span>로딩중</span>
+        <span>{TODO_LOADING_MES}</span>
       )}
     </div>
   );

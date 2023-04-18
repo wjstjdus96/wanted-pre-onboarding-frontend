@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
-import { SIGN_IN, SIGN_UP } from "../constants/const";
+import { HOME, SIGN_IN, SIGN_UP } from "../constants/const";
 
 const Buttons = styled.div`
   display: flex;
@@ -16,7 +16,7 @@ const Buttons = styled.div`
 function Home() {
   return (
     <div>
-      <h2>Home</h2>
+      <h2>{HOME}</h2>
       <Buttons>
         <Link to="/signin">
           <Button text={SIGN_IN} disabled={false} />

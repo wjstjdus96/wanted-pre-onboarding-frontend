@@ -4,7 +4,12 @@ import Input from "../components/Input";
 import styled from "styled-components";
 import { requestSignUp } from "../apis/auth";
 import { useNavigate } from "react-router-dom";
-import { RES_MESSAGE, SIGN_UP } from "../constants/const";
+import {
+  EMAIL_MES,
+  PASSWORD_MES,
+  RES_MESSAGE,
+  SIGN_UP,
+} from "../constants/const";
 import { checkEmail, checkPassword } from "../utils/checkValid";
 import { checkToken } from "../utils/checkToken";
 
@@ -12,6 +17,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 300px;
+  input {
+    margin-bottom: 23px;
+  }
 `;
 
 function SignUp() {
@@ -54,7 +62,7 @@ function SignUp() {
           <Input
             label="이메일"
             testId="email-input"
-            placeholder="ex) abc@naver.com"
+            placeholder={EMAIL_MES}
             type="email"
             value={enteredEmail}
             onChange={emailChangeHandler}
@@ -62,14 +70,14 @@ function SignUp() {
           <Input
             label="비밀번호"
             testId="password-input"
-            placeholder="8자 이상 입력하세요"
+            placeholder={PASSWORD_MES}
             type="password"
             value={enteredPassword}
             onChange={passwordChangeHandler}
           />
           <Button
-            text={SIGN_UP}
             testId="signup-button"
+            text={SIGN_UP}
             disabled={isEmailValid && isPasswordValid ? false : true}
           />
         </Wrapper>

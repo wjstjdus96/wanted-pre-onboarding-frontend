@@ -3,6 +3,7 @@ import Button from "./Button";
 import Input from "./Input";
 import styled from "styled-components";
 import { requestCreateTodo, requestGetTodos } from "../apis/todo";
+import { ADD, TODO_MES } from "../constants/const";
 
 const Wrapper = styled.div`
   display: flex;
@@ -31,13 +32,13 @@ function AddTodo({ setTodoHandler }) {
       <Wrapper>
         <Input
           testId="new-todo-input"
-          placeholder="투두를 적으십시오"
+          placeholder={TODO_MES}
           type="text"
           value={enteredTodo}
           onChange={todoChangeHandler}
           required
         />
-        <Button testId="new-todo-add-button" text="추가" />
+        <Button testId="new-todo-add-button" text={ADD} />
       </Wrapper>
     </form>
   );

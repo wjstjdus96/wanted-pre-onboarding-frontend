@@ -3,9 +3,8 @@ import { checkToken } from "../utils/checkToken";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import TodoList from "../components/TodoList";
-import AddTodo from "../components/AddTodo";
 import { BiLogOut } from "react-icons/bi";
-import { TOKEN_KEY } from "../constants/const";
+import { LOGOUT_MES, TODO, TOKEN_KEY } from "../constants/const";
 
 const Wrapper = styled.div`
   width: 300px;
@@ -28,7 +27,7 @@ function Todo() {
 
   const logOutHandler = () => {
     localStorage.removeItem(TOKEN_KEY);
-    alert("로그아웃 되었습니다.");
+    alert(LOGOUT_MES);
     navigate("/");
   };
 
@@ -36,7 +35,7 @@ function Todo() {
     <div>
       <Wrapper>
         <Header>
-          <h2>나의 투두</h2>
+          <h2>{TODO}</h2>
           <BiLogOut onClick={logOutHandler} size="24" />
         </Header>
         <TodoList />

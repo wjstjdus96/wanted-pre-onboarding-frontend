@@ -4,7 +4,14 @@ import Input from "../components/Input";
 import styled from "styled-components";
 import { requestSignIn, requestSignUp } from "../apis/auth";
 import { useNavigate } from "react-router-dom";
-import { RES_MESSAGE, SIGN_IN, SIGN_UP, TOKEN_KEY } from "../constants/const";
+import {
+  EMAIL_MES,
+  PASSWORD_MES,
+  RES_MESSAGE,
+  SIGN_IN,
+  SIGN_UP,
+  TOKEN_KEY,
+} from "../constants/const";
 import { checkEmail, checkPassword } from "../utils/checkValid";
 import { checkToken } from "../utils/checkToken";
 
@@ -62,7 +69,7 @@ function Login() {
           <Input
             label="이메일"
             testId="email-input"
-            placeholder="ex) abc@naver.com"
+            placeholder={EMAIL_MES}
             type="email"
             value={enteredEmail}
             onChange={emailChangeHandler}
@@ -70,14 +77,14 @@ function Login() {
           <Input
             label="비밀번호"
             testId="password-input"
-            placeholder="8자 이상 입력하세요"
+            placeholder={PASSWORD_MES}
             type="password"
             value={enteredPassword}
             onChange={passwordChangeHandler}
           />
           <Button
-            text={SIGN_IN}
             testId="signin-button"
+            text={SIGN_IN}
             disabled={isEmailValid && isPasswordValid ? false : true}
           />
         </Wrapper>
