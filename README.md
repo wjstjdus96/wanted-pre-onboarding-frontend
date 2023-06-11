@@ -16,9 +16,20 @@ $ npm install
 $ npm run start
 ```
 
+## 로컬 서버 구동법
+
+- 배포된 API에 문제가 있는 경우 활용할 수 있는 로컬 서버 구동법입니다.
+- 아래의 순서대로 실행하면 localhost:8000 포트에 서버가 실행됩니다
+
+```
+$ git clone https://github.com/walking-sunset/selection-task.git
+$ npm install
+$ npm starts
+```
+
 ## 프로젝트 링크
 
-[나의 TODO 바로가기](https://wjstjdus96.github.io/wanted-pre-onboarding-frontend)
+[나의 TODO 바로가기](https://wjstjdus96.github.io/)
 
 ## 개발환경
 
