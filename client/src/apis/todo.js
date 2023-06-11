@@ -11,7 +11,7 @@ export const requestCreateTodo = async (data) => {
     },
   };
   await axios
-    .post(`${API_URL}todos`, data, config)
+    .post(`${API_URL}/todos`, data, config)
     .then((res) => {
       if (res.status == 201) {
         // console.log("생성 완료");
@@ -28,7 +28,7 @@ export const requestGetTodos = async (setHandler) => {
     },
   };
   await axios
-    .get(`${API_URL}todos`, config)
+    .get(`${API_URL}/todos`, config)
     .then((res) => {
       if (res.status == 200) {
         setHandler(res.data);
@@ -47,7 +47,7 @@ export const requestUpdateTodo = async (id, data) => {
     },
   };
   await axios
-    .put(`${API_URL}todos/${id}`, data, config)
+    .put(`${API_URL}/todos/${id}`, data, config)
     .then((res) => {
       if (res.status == 200) {
         // console.log(`${id}업데이트 완료`);
@@ -64,7 +64,7 @@ export const requestDeleteTodo = async (id) => {
     },
   };
   await axios
-    .delete(`${API_URL}todos/${id}`, config)
+    .delete(`${API_URL}/todos/${id}`, config)
     .then((res) => {
       if (res.status == 204) {
         // console.log("삭제 완료");
