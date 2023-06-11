@@ -11,7 +11,6 @@
 ## 실행방법
 
 ```
-$ cd client
 $ npm install
 $ npm run start
 ```
@@ -40,7 +39,6 @@ $ npm starts
 ## 폴더구조
 
 ```
-client 폴더 내부
 /src/apis => api 요청 처리함수를 모아둔 폴더
 /src/components => 페이지에 사용되는 컴포넌트를 모아둔 폴더
 /src/constants => 상수를 모아둔 폴더
