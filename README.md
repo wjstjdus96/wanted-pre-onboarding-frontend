@@ -28,7 +28,7 @@ $ npm starts
 
 ## 프로젝트 링크
 
-[나의 TODO 바로가기](https://wjstjdus96.github.io/)
+[나의 TODO 바로가기](https://main--strong-truffle-6c72f8.netlify.app/)
 
 ## 개발환경
 
